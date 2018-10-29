@@ -1,0 +1,46 @@
+nohup: ignoring input
+[0mGET / [32m200 [0m8.699 ms - 2881[0m
+[0mGET /stylesheets/style.css [32m200 [0m0.956 ms - 394[0m
+[0mGET /favicon.ico [33m404 [0m9.075 ms - 1056[0m
+[0mGET /getcity?q=P [36m304 [0m2.691 ms - -[0m
+[0mGET /getcity?q=P [36m304 [0m0.848 ms - -[0m
+[0mGET /getcity?q=Pr [32m200 [0m0.879 ms - 57[0m
+[0mGET /getcity?q=Pro [36m304 [0m0.813 ms - -[0m
+[0mGET /getcity?q=Pr [36m304 [0m0.736 ms - -[0m
+[0mGET /getcity?q=P [36m304 [0m0.836 ms - -[0m
+[0mGET /getcity?q= [36m304 [0m0.999 ms - -[0m
+[0mGET /getcity?q= [36m304 [0m0.824 ms - -[0m
+https://owlbot.info/api/v1/dictionary/r
+https://owlbot.info/api/v1/dictionary/ru
+[0mGET /owlroute?q=r [32m200 [0m202.753 ms - -[0m
+[0mGET /owlroute?q=ru [32m200 [0m147.645 ms - -[0m
+https://owlbot.info/api/v1/dictionary/run
+[0mGET /owlroute?q=run [32m200 [0m141.442 ms - -[0m
+https://owlbot.info/api/v1/dictionary/ru
+https://owlbot.info/api/v1/dictionary/r
+[0mGET /owlroute?q=ru [32m200 [0m151.967 ms - -[0m
+https://owlbot.info/api/v1/dictionary/
+[0mGET /owlroute?q=r [32m200 [0m141.090 ms - -[0m
+[0mGET /owlroute?q= [31m502 [0m60.076 ms - -[0m
+https://owlbot.info/api/v1/dictionary/
+[0mGET /owlroute?q= [33m404 [0m128.021 ms - -[0m
+https://owlbot.info/api/v1/dictionary/ru
+[0mGET /owlroute?q=ru [32m200 [0m145.343 ms - -[0m
+https://owlbot.info/api/v1/dictionary/run
+https://owlbot.info/api/v1/dictionary/ru
+[0mGET /owlroute?q=run [32m200 [0m141.310 ms - -[0m
+[0mGET /owlroute?q=ru [32m200 [0m131.502 ms - -[0m
+https://owlbot.info/api/v1/dictionary/ru
+[0mGET /owlroute?q=ru [32m200 [0m131.161 ms - -[0m
+https://owlbot.info/api/v1/dictionary/r
+https://owlbot.info/api/v1/dictionary/
+[0mGET /owlroute?q=r [32m200 [0m153.317 ms - -[0m
+[0mGET /owlroute?q= [33m404 [0m129.920 ms - -[0m
+https://owlbot.info/api/v1/dictionary/
+[0mGET /owlroute?q= [33m404 [0m119.182 ms - -[0m
+https://owlbot.info/api/v1/dictionary/r
+[0mGET /owlroute?q=r [32m200 [0m111.845 ms - -[0m
+https://owlbot.info/api/v1/dictionary/ru
+[0mGET /owlroute?q=ru [32m200 [0m153.099 ms - -[0m
+https://owlbot.info/api/v1/dictionary/run
+[0mGET /owlroute?q=run [32m200 [0m212.365 ms - -[0m
