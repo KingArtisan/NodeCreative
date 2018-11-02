@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>City Finder</title>
+<title>D&D Name Suggestions</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -9,73 +9,119 @@
 <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body class="mountain-bg">
-  <br><br>
+  <br>
   <div class="container transwhite-bg">
     <br>
     <div class="row">
-      <div class="col-sm-12" align="center">
-        <h1>Utah City Finder and Dictionary Service</h1>
+      <div class="col-md-12" align="center">
+        <br>
+        <h1>D&D Name Suggestions</h1>
+        <br>
+        <hr>
+        <br>
+        <p>Select your character's race, then begin typing in the "Name" or "Surname" box to generate a list of name suggestions based on your race that are similar to what you've typed. (Note: Some races, such as tieflings and half-orcs, do not traditionally use surnames.)</p>
+        <br>
         <hr>
         <br>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <form>
+      <div class="col-md-12">
+        <div align="center">
+          <h3>Select Your Race: 
+          <select id="raceSelect">
+            <option selected value="human">Human</option>
+            <option value="elf">Elf</option>
+            <option value="halfelf">Half-Elf</option>
+            <option value="dwarf">Dwarf</option>
+            <option value="gnome">Gnome</option>
+            <option value="halfling">Halfling</option>
+            <option value="halforc">Half-Orc</option>
+            <option value="dragonborn">Dragonborn</option>
+            <option value="tiefling">Tiefling</option>
+          </select>
+          </h3>
+          <br><br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 border-right">
+        <form>  
           <div align="center">
-            <h3>Enter A Utah City: <input type="text" id="cityfield" value=""></h3><br>
+            <h3>Name: <input type="text" id="namefield" value=""></h3><br>
           </div>
           <div align="center">
             <h4>Suggestions: </h4>
+            <span id="nameHint">(Empty)</span>
+            <br>
           </div>
-          <span id="txtHint">Empty</span>
         </form>
-        <hr>
+      </div>
+      <div class="col-md-6">
+        <form>  
+          <div align="center">
+            <h3>Surname: <input type="text" id="surnamefield" value=""></h3><br>
+          </div>
+          <div align="center">
+            <h4>Suggestions: </h4>
+            <span id="surnameHint">(Empty)</span>
+            <br>
+          </div>
+        </form>
+      </div>
     </div>
+  <br>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <form>
-        <div align="center">
-          <h3>Search for a word: <input type="text" id="wordfield" value=""></h3><br>
-        </div>
-        <div align="center">
-          <h4>Definition: </h4>
-        </div>
-        <span id="wordDef">(No word to define)</span>
-      </form>
-    </div>
-  </div>
-</div>
+<br>
 <script>
-$( "#cityfield" ).keyup(function() {
-  var url = "getcity?q="+$("#cityfield").val();
+var race = "human";
+
+$("#raceSelect").change(function(){
+  race = $("#raceSelect").val();
+  $("#namefield").val("");
+  $("#surnamefield").val("");
+  $("#nameHint").html("");
+  $("#surnameHint").html("");
+  
+  if(race == "halforc" || race == "tiefling"){
+    $("#surnamefield").prop('disabled', true);
+    $("#surnamefield").val("(None)");
+  }else{
+    $("#surnamefield").prop('disabled', false);
+    $("#surnamefield").val("");
+  } 
+  
+  if(race == "halfelf"){
+    race = "human"; //Half-elves use human names
+  }
+});
+
+$( "#namefield" ).keyup(function() {
+  var url = "getname?race="+race+"&q="+$("#namefield").val();
   $.getJSON(url,function(data) {
     var everything;
-    everything = "<ul>";
+    everything = "<ul style='list-style-type: none;'>";
     $.each(data, function(i,item) {
-      everything += "<li> "+data[i].city+"</li>";
+      var str = data[i].name.charAt(0).toUpperCase() + data[i].name.slice(1);
+      everything += "<li> "+str+"</li>";
     });
     everything += "</ul>";
-    $("#txtHint").html(everything);
+    $("#nameHint").html(everything);
   });
 });
 
-$("#wordfield").keyup(function(){
-  var url="owlroute?q="+$("#wordfield").val();
+$( "#surnamefield" ).keyup(function() {
+  var url = "getsurname?race="+race+"&q="+$("#surnamefield").val();
   $.getJSON(url,function(data) {
-    console.log(data);
     var everything;
-    everything = "<ul>";
-    $.each(data,function(i,item){
-      everything += "<li><ul>";
-      everything += "<li>Type: "+data[i].type+"</li>";
-      everything += "<li>Definition: "+data[i].defenition+"</li>";
-      everything += "<li>Example: "+data[i].example+"</li>";
-      everything += "</ul></li>";
+    everything = "<ul style='list-style-type: none;'>";
+    $.each(data, function(i,item) {
+      var str = data[i].surname.charAt(0).toUpperCase() + data[i].surname.slice(1);
+      everything += "<li> "+str+"</li>";
     });
     everything += "</ul>";
-    $("#wordDef").html(everything);
+    $("#surnameHint").html(everything);
   });
 });
 </script>

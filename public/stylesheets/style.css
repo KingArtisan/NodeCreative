@@ -1,5 +1,5 @@
 .mountain-bg{
-  background-image: url("https:/i.imgur.com/mmVZxbz.jpg");
+  background-image: url("https://www.augustineinstitute.org/wp-content/uploads/2016/03/background-parchment.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -19,4 +19,9 @@ ul{
     margin: 0;
     overflow: scroll;
     overflow-x: hidden;
+}
+
+.border-right{
+  border-right: solid;
+  border-radius: 1px;
 }
